@@ -1,0 +1,40 @@
+
+<div class="CD-organizer">
+
+	<%= error_messages_for 'index' %>
+
+	<table>
+		<tr>
+			<th>
+				<%= link_to "Albums", { :action => "index", :order => "album" } %>
+			</th>
+			<th>
+				<%= link_to "Song", { :action => "index", :order => "title" } %>
+			</th>
+			<th>
+				<%= link_to "Artist", { :action => "index", :order => "artist" } %>
+			</th>
+			<th>
+				<%= link_to "Companie", { :action => "index", :order => "companie" } %>
+			</th>
+		</tr>
+		<% for song in @songs %>
+		<tr>
+			<td> <%= song.album %> </td>
+			<td> <%= song.title %> </td>
+			<td> <%= song.artist %> </td>
+			<td> <%= song.companie %> </td>
+		</tr>
+		<% end -%>
+	</table>
+</duv>
+<div class="song-form">
+	<h3> Add New Song </h3>
+	<% form_for :song, :url => { :action => :new_song } do |new_song| %>
+		<p> Album: <%= new_song.text_field :album, :size => 30 %> </p>
+		<p> Song: <%= new_song.text_field :title, :size => 30 %> </p>
+		<p> Artist: <%= new_song.text_field :artist, :size => 30 %> </p>
+		<p> Companie: <%= new_song.text_field :companie, :size => 30 %> </p>
+		<p> <%= submit_tag %> </p>
+	<% end %>
+</div>
