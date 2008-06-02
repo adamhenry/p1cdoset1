@@ -18,13 +18,18 @@
 				<%= link_to "Companie", { :action => "index", :order => "companie" } %>
 			</th>
 		</tr>
-		<% for song in @songs %>
+		<% for album in @albums %>
 		<tr>
-			<td> <%= song.album %> </td>
+			<td><%= album.title %> </td>
+		</tr>
+		<% for song in album.songs %>
+		<tr>
+			<td> </td>
 			<td> <%= song.title %> </td>
 			<td> <%= song.artist %> </td>
 			<td> <%= song.companie %> </td>
 		</tr>
+		<% end -%>
 		<% end -%>
 	</table>
 </duv>

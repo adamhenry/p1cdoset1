@@ -2,6 +2,7 @@ class OrganizerController < ApplicationController
 
 	def index
 		@songs = Song.find(:all, :order => params[:order])
+		@albums = Album.find(:all)
 	end
 
 	def new_song
