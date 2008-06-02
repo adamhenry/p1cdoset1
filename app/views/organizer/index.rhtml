@@ -32,23 +32,23 @@
 			<td> </td>
 			<td> </td>
 			<td> <%= song.title %> </td>
-			<td> <%= song.artist %> </td>
+			<td> <%= song.artist.name %> </td>
 			<td> </td>
 		</tr>
 		<% end -%>
 		<tr>
 			<td> </td>
 			<td> </td>
-			<td><%= link_to "Add Song", { :action => "new_song", :album_id => album.id} %></td>
+			<td><%= link_to "Add Song", { :action => "add_song", :album_id => album.id} %></td>
 		</tr>
 		<% end -%>
 		<tr>
 			<td> </td>
-			<td><%= link_to "Add Album", { :action => "new_album", :label_id => label.id} %></td>
+			<td><%= link_to "Add Album", { :action => "add_album", :label_id => label.id} %></td>
 		</tr>
 		<% end -%>
 	</table>
-	<h2><%= link_to "Add Lable", :action => "new_label" %> </h2>
+	<h2><%= link_to "Add Lable", :action => "add_label" %> </h2>
 </div>
 <div class="song-form">
 	<h3> Add New Song </h3>

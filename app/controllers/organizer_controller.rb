@@ -6,9 +6,13 @@ class OrganizerController < ApplicationController
 		@albums = Album.find(:all)
 	end
 
+	def add_song
+		@album = Album.find(params[:album_id])
+	end
+
 	def new_song
-		@song = Song.new params[:song]
-		@song.save
+		@song = Song.new params[:title]
+		@song.save!
 		flash[:notice] = " #{@song.title} by #{@song.artist} added"
 		redirect_to :action => "index"
 	end
