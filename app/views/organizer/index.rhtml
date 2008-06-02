@@ -6,6 +6,9 @@
 	<table>
 		<tr>
 			<th>
+				<%= link_to "Label", { :action => "index", :order => "label" } %>
+			</th>
+			<th>
 				<%= link_to "Albums", { :action => "index", :order => "album" } %>
 			</th>
 			<th>
@@ -14,25 +17,39 @@
 			<th>
 				<%= link_to "Artist", { :action => "index", :order => "artist" } %>
 			</th>
-			<th>
-				<%= link_to "Companie", { :action => "index", :order => "companie" } %>
-			</th>
 		</tr>
-		<% for album in @albums %>
+		<% for label in @labels %>
 		<tr>
-			<td><%= album.title %> </td>
+			<td><%= link_to label.label, { :action => "edit_label", :id => label.id} %></td>
+		</tr>
+		<% for album in label.albums %>
+		<tr>
+			<td> </td>
+			<td><%= link_to album.title, { :action => "edit_album", :id => album.id} %></td>
 		</tr>
 		<% for song in album.songs %>
 		<tr>
 			<td> </td>
+			<td> </td>
 			<td> <%= song.title %> </td>
 			<td> <%= song.artist %> </td>
-			<td> <%= song.companie %> </td>
+			<td> </td>
 		</tr>
 		<% end -%>
+		<tr>
+			<td> </td>
+			<td> </td>
+			<td><%= link_to "Add Song", { :action => "new_song", :album_id => album.id} %></td>
+		</tr>
+		<% end -%>
+		<tr>
+			<td> </td>
+			<td><%= link_to "Add Album", { :action => "new_album", :label_id => label.id} %></td>
+		</tr>
 		<% end -%>
 	</table>
-</duv>
+	<h2><%= link_to "Add Lable", :action => "new_label" %> </h2>
+</div>
 <div class="song-form">
 	<h3> Add New Song </h3>
 	<% form_for :song, :url => { :action => :new_song } do |new_song| %>
