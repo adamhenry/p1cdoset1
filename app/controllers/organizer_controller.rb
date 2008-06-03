@@ -11,7 +11,7 @@ class OrganizerController < ApplicationController
 	end
 
 	def new_song
-		@song = Song.new params[:title]
+		@song = Song.new params[:song], :abum_id => params[:album_id]
 		@song.save!
 		flash[:notice] = " #{@song.title} by #{@song.artist} added"
 		redirect_to :action => "index"

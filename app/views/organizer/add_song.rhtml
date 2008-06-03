@@ -1,0 +1,12 @@
+
+<div class="song-form">
+	<h3> Add New Song </h3>
+	<% form_for :song, :url => { :action => :new_song } do |new_song| %>
+		<p> Album: <%= @album.title%> </p>
+		<p> Lable: <%= @album.label.label %> </p>
+		<p> Song: <%= new_song.text_field :title, :size => 30 %> </p>
+		<p> Artist: <%= new_song.text_field :artist, :size => 30 %> </p>
+		<p> <%= submit_tag %> </p>
+		<input type="hidden" name="album_id" value="<%= @album.id %>">
+	<% end %>
+</div>
