@@ -11,9 +11,9 @@ class OrganizerController < ApplicationController
 	end
 
 	def new_song
-		@song = Song.new params[:song], :abum_id => params[:album_id]
-		@song.save!
-		flash[:notice] = " #{@song.title} by #{@song.artist} added"
+		@artist = Artist.find_by_name(params[:artist]) || Artist.create( params[:artist])
+		@song = Song.create params[:song].merge(  {:album_id => params[:album_id],:artist_id => @artist.id } )
+		flash[:notice] = " #{@song.title} by #{@artist.name} added"
 		redirect_to :action => "index"
 	end
 
