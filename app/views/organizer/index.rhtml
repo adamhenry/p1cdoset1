@@ -34,6 +34,7 @@
 			<td> <%= song.title %> </td>
 			<td> <%= song.artist.name %> </td>
 			<td> </td>
+			<td> <%= link_to "X", { :action => "destroy_song", :id => song.id } %> </td>
 		</tr>
 		<% end -%>
 		<tr>

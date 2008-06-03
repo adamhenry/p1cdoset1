@@ -5,6 +5,13 @@ class OrganizerController < ApplicationController
 		@songs = Song.find(:all, :order => params[:order])
 		@albums = Album.find(:all)
 	end
+	
+	def destroy_song
+		@song = Song.find(params[:id])
+		flash[:notice] = " #{@song.title} by #{@song.artist.name} removed"
+		Song.find(params[:id]).destroy
+		redirect_to :action => "index"
+	end
 
 	def add_song
 		@album = Album.find(params[:album_id])
